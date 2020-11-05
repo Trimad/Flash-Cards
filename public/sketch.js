@@ -9,15 +9,24 @@ function preload() {
   myFont = loadFont('assets/inconsolata.woff');
 }
 
-
 function setup() {
+
+  fetch("http://localhost:3000/menu")
+  .then((response) => {
+    return response.json();
+  })
+  .then((json) => {
+    buildMenu(json);
+    addListeners();
+  });
+
   textFont(myFont);
   noCanvas();
   body = select('body');
   cardFront = select('.flip-card-front');
   cardBack = select('.flip-card-back');
   cardBackTable = select('.answers-table');
-  const ip = '192.168.1.3';
+  const ip = '192.168.1.6';
   socket = io.connect('http://' + ip + ':3000');
 
   // socket.on('connect', () => {
@@ -28,6 +37,7 @@ function setup() {
   socket.on('state', function (data) {
     state = data;
     showCard();
+    updateStyle();
   });
 
   socket.on('edit', function (data) {

@@ -1,13 +1,15 @@
 const fs = require('fs');
 
 var state = {
+  test:"",
   chapter: 0,
-  data: [],
   section: '1.1',
   card: 0,
   rotation: 0,
+  data: [],
 };
 
+var menu = JSON.parse(fs.readFileSync('public/assets/menu.json'));
 var chapters = new Array();
 chapters[0] = JSON.parse(fs.readFileSync('public/assets/1-networking-concepts.json'));
 chapters[1] = JSON.parse(fs.readFileSync('public/assets/2-infrastructure.json'));
@@ -71,4 +73,9 @@ io.sockets.on('connect', function (socket) {
     console.log('Client ' + socket.id + ' has disconnected');
   });
 
+});
+
+
+app.get('/menu', (request, response) => {
+  response.send(menu);
 });
