@@ -3,6 +3,7 @@
         "name": "CompTIA A+ 220-1001",
         "chapter": [
             {
+                "color":"#FFFFFF",
                 "file": "",
                 "name": "Mobile Devices",
                 "section": [
@@ -30,6 +31,7 @@
                 ]
             },
             {
+                "color":"#FFFFFF",
                 "file": "",
                 "name": "Networking",
                 "section": [
@@ -60,6 +62,7 @@
                 ]
             },
             {
+                "color":"#FFFFFF",
                 "file": "",
                 "name": "Hardware",
                 "section": [
@@ -99,6 +102,7 @@
                 ]
             },
             {
+                "color":"#FFFFFF",
                 "file": "",
                 "name": "Virtualization and Cloud Computing",
                 "section": [
@@ -111,6 +115,7 @@
                 ]
             },
             {
+                "color":"#FFFFFF",
                 "file": "",
                 "name": "Hardware and Network Troubleshooting",
                 "section": [
@@ -143,6 +148,7 @@
         "name": "CompTIA A+ 220-1002",
         "chapter": [
             {
+                "color":"#FFFFFF",
                 "file": "",
                 "name": "Operating Systems",
                 "section": [
@@ -176,6 +182,7 @@
                 ]
             },
             {
+                "color":"#FFFFFF",
                 "file": "",
                 "name": "Security",
                 "section": [
@@ -212,6 +219,7 @@
                 ]
             },
             {
+                "color":"#FFFFFF",
                 "file": "",
                 "name": "Software Troubleshooting",
                 "section": [
@@ -233,6 +241,7 @@
                 ]
             },
             {
+                "color":"#FFFFFF",
                 "file": "",
                 "name": "Operational Procedures",
                 "section": [
@@ -271,6 +280,7 @@
         "name": "CompTIA Network+",
         "chapter": [
             {
+                "color":"#6E298D",
                 "file": "1-networking-concepts.json",
                 "name": "Networking Concepts",
                 "section": [
@@ -301,6 +311,7 @@
                 ]
             },
             {
+                "color":"#62A609",
                 "file": "2-infrastructure.json",
                 "name": "Infrastructure",
                 "section": [
@@ -322,6 +333,7 @@
                 ]
             },
             {
+                "color":"#F5A81C",
                 "file": "3-network-operations.json",
                 "name": "Network Operations",
                 "section": [
@@ -343,6 +355,7 @@
                 ]
             },
             {
+                "color":"#0091B9",
                 "file": "4-network-security.json",
                 "name": "Network Security",
                 "section": [
@@ -367,6 +380,7 @@
                 ]
             },
             {
+                "color":"#C1D42E",
                 "file": "5-network-troubleshooting-and-tools.json",
                 "name": "Networking Troubleshooting and Tools",
                 "section": [

@@ -118,3 +118,6 @@ function addListeners() {
     return sum;
   }
 }
+
+function collapseAll(){}
+

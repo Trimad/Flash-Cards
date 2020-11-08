@@ -17,13 +17,12 @@
 </head>
 
 <body>
-  
+
   <div class="container">
 
     <div style="grid-column: 1 / 4; grid-row: 1; background:red">
-      
+
       <ul>
-        <li><div id="menu"> </div></li>
         <li class="info dropdown">
           <a class="dropbtn">Other</a>
           <div class="dropdown-content">
@@ -32,14 +31,16 @@
               target="_blank" class="info">Exam Compass</a>
             <a href="Network-N10-007-Exam-Objectives.pdf" target="_blank" class="info">Exam Objectives</a>
             <a href="https://www.youtube.com/playlist?list=PLG49S3nxzAnmpdmX7RoTOyuNJQAb-r-gd" target="_blank"
-              class="info">Professor
-              Messer</a>
+              class="info">Professor Messer</a>
           </div>
         <li style="padding-top:0.25em; padding-left:0.25em; font-weight: bold;">
           <input type="radio" name="session" onchange="updateSession()" checked>Session A
           <br>
           <input type="radio" name="session" onchange="updateSession()">Session B
-        </li s>
+        </li>
+        </li>
+        <li  class="menu" style="">
+          <div id="menu" style="position: absolute; z-index: 1; " ></div>
         </li>
         <li class="logo">
           Network+ N10-007

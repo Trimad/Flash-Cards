@@ -1,12 +1,13 @@
 const fs = require('fs');
 
 var state = {
-  test:"",
+  test: 0,
   chapter: 0,
-  section: '1.1',
+  section: 0,
   card: 0,
   rotation: 0,
   data: [],
+  color:""
 };
 
 var menu = JSON.parse(fs.readFileSync('public/assets/menu.json'));
@@ -44,7 +45,9 @@ var io = require('socket.io')(server);
 // Register a callback function to run when we have an individual connection
 // This is run for each individual user that connects
 io.sockets.on('connect', function (socket) {
-  state.data = chapters[state.chapter];
+  state.data = chapters[state.chapter]["1.1"];
+  state.color = menu[state.chapter].chapter[state.chapter].color;
+  console.log(state.color);
   console.log('We have a new client: ' + socket.id);
   console.log('Client ' + socket.id + ' has connected');
 
