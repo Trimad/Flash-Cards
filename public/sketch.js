@@ -5,10 +5,23 @@ var cardFront, cardBack, cardBackTable, body;
 // Keep track of our socket connection
 var socket;
 
+var tests = new Array();
+
 function preload() {
+
+  fetch("http://localhost:3000/tests")
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      tests = json;
+      console.log(tests);
+    });
+
+
+
   myFont = loadFont('assets/inconsolata.woff');
 
-  
   fetch("http://localhost:3000/menu")
     .then((response) => {
       return response.json();
@@ -19,7 +32,7 @@ function preload() {
     });
 
 
-  
+
 }
 
 function setup() {
@@ -30,7 +43,7 @@ function setup() {
   cardFront = select('.flip-card-front');
   cardBack = select('.flip-card-back');
   cardBackTable = select('.answers-table');
-  const ip = '192.168.1.141';
+  const ip = '192.168.1.6';
   socket = io.connect('http://' + ip + ':3000');
 
   // socket.on('connect', () => {
@@ -168,19 +181,6 @@ function keyPressed() {
     changeCardAndRotation(state.card, state.rotation);
   }
 
-}
-
-function changeChapterAndSection(chapter, section) {
-  state.chapter = chapter;
-  state.section = section;
-  state.card = 0;
-  state.rotation = 0;
-  updateTransform();
-  //updateStyle();
-  setTimeout(function () {
-    showCard();
-  }, 300);
-  socket.emit('delta', state);
 }
 
 function changeCardAndRotation(card, rotation) {

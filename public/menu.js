@@ -2,7 +2,7 @@
 var test, chapter, section;
 
 function buildMenu(json) {
-  console.log(json);
+
   let menu = document.getElementById("menu");
   let menuBUTTON = document.createElement("BUTTON");
   menuBUTTON.className = "collapsible l1"; //1. collapsible button
@@ -66,7 +66,6 @@ function changeDeck(test, chapter, section) {
   state.rotation = 0;
   console.log(state);
   updateTransform();
-  updateStyle();
   setTimeout(function () {
     showCard();
   }, 300);

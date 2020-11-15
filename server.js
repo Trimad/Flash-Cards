@@ -1,22 +1,33 @@
 const fs = require('fs');
 
 var state = {
-  test: 0,
+  test: 2,
   chapter: 0,
-  section: 0,
+  section: "1.1",
   card: 0,
   rotation: 0,
   data: [],
-  color:""
+  color: ""
 };
 
 var menu = JSON.parse(fs.readFileSync('public/assets/menu.json'));
-var chapters = new Array();
-chapters[0] = JSON.parse(fs.readFileSync('public/assets/1-networking-concepts.json'));
-chapters[1] = JSON.parse(fs.readFileSync('public/assets/2-infrastructure.json'));
-chapters[2] = JSON.parse(fs.readFileSync('public/assets/3-network-operations.json'));
-chapters[3] = JSON.parse(fs.readFileSync('public/assets/4-network-security.json'));
-chapters[4] = JSON.parse(fs.readFileSync('public/assets/5-network-troubleshooting-and-tools.json'));
+
+var tests = new Array();
+tests[0] = [];
+tests[1] = [];
+tests[2] = [];
+
+//Network+
+tests[2][0] = JSON.parse(fs.readFileSync('public/assets/Network+/1-networking-concepts.json'));
+tests[2][1] = JSON.parse(fs.readFileSync('public/assets/Network+/2-infrastructure.json'));
+tests[2][2] = JSON.parse(fs.readFileSync('public/assets/Network+/3-network-operations.json'));
+tests[2][3] = JSON.parse(fs.readFileSync('public/assets/Network+/4-network-security.json'));
+tests[2][4] = JSON.parse(fs.readFileSync('public/assets/Network+/5-network-troubleshooting-and-tools.json'));
+
+// var tests = new Array();
+// tests[0] = JSON.parse(fs.readFileSync('public/assets/network-plus.json'));
+// console.log(tests[0]);
+
 // Based off of Shawn Van Every's Live Web
 // http://itp.nyu.edu/~sve204/liveweb_fall2013/week3.html
 
@@ -44,10 +55,12 @@ var io = require('socket.io')(server);
 
 // Register a callback function to run when we have an individual connection
 // This is run for each individual user that connects
+
 io.sockets.on('connect', function (socket) {
-  state.data = chapters[state.chapter]["1.1"];
-  state.color = menu[state.chapter].chapter[state.chapter].color;
-  console.log(state.color);
+  //state.data = chapters[state.chapter]["1.1"];
+  console.log(state.test, state.chapter, state.section);
+  state.data = tests[state.test][state.chapter][state.section];
+
   console.log('We have a new client: ' + socket.id);
   console.log('Client ' + socket.id + ' has connected');
 
@@ -66,8 +79,13 @@ io.sockets.on('connect', function (socket) {
   });
 
   // When this user emits, client side: socket.emit('otherevent',some data);
-  socket.on('delta', function (data) {
-    state = data;
+  socket.on('delta', function (x) {
+    state = x;
+    console.log(state);
+    state.data = tests[state.test][state.chapter][state.section];
+
+    // state.color = menu[state.chapter].chapter[state.chapter].color;
+    // console.log(state.color);
     socket.broadcast.emit('delta', state);
     // This is a way to send to everyone including sender
   });
@@ -78,7 +96,10 @@ io.sockets.on('connect', function (socket) {
 
 });
 
-
 app.get('/menu', (request, response) => {
   response.send(menu);
+});
+
+app.get('/tests', (request, response) => {
+  response.send(tests);
 });
